@@ -1,0 +1,61 @@
+.gif-app {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gif-app > input {
+    width: 200px;
+    height: 24px;
+    border-radius: 5px;
+    padding-left: 5px;
+    border: 2px solid black;
+}
+
+.gif-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.gifs {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.gif-container > h2 {
+    margin: 0 auto;
+}
+
+.search-word {
+    display: none;
+}
+
+.gif {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 35%;
+    min-width: 33%;
+}
+
+.gif > img {
+    width: 350px;
+    height: 350px;
+    border-radius: 25px;
+}
+
+.gif > h2 {
+    text-align: center;
+    text-transform: capitalize;
+}
