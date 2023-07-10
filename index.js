@@ -12,6 +12,7 @@ const gifName = (res) => {
     const singleGif = new SingleGif({
         urlImage: res.images.downsized.url,
         title: res.title,
+        id: res.id,
     });
     const gifView = new GifView(singleGif);
     if (count === 0) {
@@ -35,24 +36,44 @@ const GifCollection = Backbone.Collection.extend({
 
 const gifCollection = new GifCollection();
 
+let favGifsArr = [];
+
 const SingleGif = Backbone.View.extend({
     el: $('#gif-container'),
     template: _.template($('#gif-template').html()),
     initialize: function (attributes) {
         this.options = attributes;
+        this.favorite = $('.fav-button');
+        // TODO: Do a better search of why this 🔽 solves the problem of multiple events call
+        // This line unbinds the click event from the el wrapper of the view aka #gif-container.
+        $(this.el).unbind('click');
         if (this.options != undefined) {
             this.render();
         }
+    },
+    events: {
+        'click .fav-button': 'toggleFavorites',
     },
     render: function () {
         if (this.options != undefined) {
             const datos = {
                 urlImage: this.options.urlImage,
                 title: this.options.title,
+                id: this.options.id,
             };
             const html = this.template(datos);
             $('#gifs').append(html);
             return this;
+        }
+    },
+    toggleFavorites: (e) => {
+        const gifId = e.target.id;
+        if (favGifsArr.includes(gifId)) {
+            favGifsArr = favGifsArr.filter((id) => id !== gifId);
+            localStorage.setItem('favs', JSON.stringify(favGifsArr));
+        } else {
+            favGifsArr.push(gifId);
+            localStorage.setItem('favs', JSON.stringify(favGifsArr));
         }
     },
 });

@@ -47,6 +47,16 @@
     align-items: center;
     max-width: 35%;
     min-width: 33%;
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.gif > p {
+    position: absolute;
+    top: 5px;
+    right: 150px;
+    cursor: pointer;
 }
 
 .gif > img {

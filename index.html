@@ -7,6 +7,7 @@
   <script defer src="index.js"></script>
   <link rel="stylesheet" href="styles.css">
   <body>
+    <a href="favorites.html" target="">Favorites</a>
         <div id="gif-app" class="gif-app">
             <h1>Search the best gifs here! </h1>
             <input id="input-search" placeholder="Search gifs"/>
@@ -18,7 +19,8 @@
           </div>
         </div>
         <script id='gif-template' type="text/template">
-          <div  class="gif" >
+          <div class="gif" >
+            <p id="<%= id%>" class='fav-button'>🖤</p>
             <h2><%= title %></h2>
             <img src='<%= urlImage %>'/> 
           </div>
