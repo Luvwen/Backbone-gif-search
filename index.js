@@ -66,15 +66,21 @@ const SingleGif = Backbone.View.extend({
             return this;
         }
     },
-    toggleFavorites: (e) => {
+    toggleFavorites: function (e) {
         const gifId = e.target.id;
         if (favGifsArr.includes(gifId)) {
-            favGifsArr = favGifsArr.filter((id) => id !== gifId);
-            localStorage.setItem('favs', JSON.stringify(favGifsArr));
+            this.removeFavorites(gifId);
         } else {
-            favGifsArr.push(gifId);
-            localStorage.setItem('favs', JSON.stringify(favGifsArr));
+            this.addFavorites(gifId);
         }
+    },
+    removeFavorites: (gifId) => {
+        favGifsArr = favGifsArr.filter((id) => id !== gifId);
+        localStorage.setItem('favs', JSON.stringify(favGifsArr));
+    },
+    addFavorites: (gifId) => {
+        favGifsArr.push(gifId);
+        localStorage.setItem('favs', JSON.stringify(favGifsArr));
     },
 });
 
