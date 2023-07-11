@@ -92,7 +92,9 @@ const GifView = Backbone.View.extend({
     initialize: function (attributes) {
         this.options = attributes;
         this.input = $('#input-search');
-        this.render();
+        if (this.el != undefined) {
+            this.render();
+        }
     },
     events: {
         'keyup #input-search': 'inputChange',
