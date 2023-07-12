@@ -74,12 +74,14 @@ const SingleGif = Backbone.View.extend({
             this.addFavorites(gifId);
         }
     },
-    removeFavorites: (gifId) => {
+    removeFavorites: function (gifId) {
         favGifsArr = favGifsArr.filter((id) => id !== gifId);
         localStorage.setItem('favs', JSON.stringify(favGifsArr));
     },
-    addFavorites: (gifId) => {
+    addFavorites: function (gifId) {
         favGifsArr.push(gifId);
+        $(`#${gifId}`).val('❤');
+        console.log($(`#${gifId}`).val());
         localStorage.setItem('favs', JSON.stringify(favGifsArr));
     },
 });
