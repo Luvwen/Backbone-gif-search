@@ -90,3 +90,5 @@ const FavsView = Backbone.View.extend({
         return this;
     },
 });
+
+console.log('hola mundo');
